@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/config");
 // const Pusher = require('pusher');
-const generatePDF = require("./generatePdf");
+// const generatePDF = require("./generatePdf");
 var axios = require("axios");
 const bodyParser = require("body-parser");
 

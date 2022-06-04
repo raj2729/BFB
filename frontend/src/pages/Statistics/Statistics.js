@@ -20,7 +20,7 @@ import Featured from "../../components/featured/Featured";
 
 import "./Statistics.scss";
 import Chart from "../../components/chart/Chart";
-const Statistics = () => {
+const Statistics = (props) => {
   return (
     <div className="Statistics">
       <Sidebar />
@@ -29,6 +29,7 @@ const Statistics = () => {
         <div className="charts">
           <Featured />
           <Chart
+            chartData={props.chartData}
             aspect={2 / 1}
             title="Total users in last six months"
             type={LineChart}

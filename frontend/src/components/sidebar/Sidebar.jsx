@@ -28,7 +28,25 @@ const Sidebar = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Dashboard</span>
+              <span>Program 1</span>
+            </li>
+          </Link>
+          <Link to="/program2" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Program 2</span>
+            </li>
+          </Link>
+          <Link to="/program3" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Program 3</span>
+            </li>
+          </Link>
+          <Link to="/program4" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Program 4</span>
             </li>
           </Link>
           <p className="title">LISTS</p>

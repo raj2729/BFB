@@ -7,7 +7,7 @@ import List from "../../components/List/List";
 import "./home.scss";
 import { AreaChart, Area } from "recharts";
 import Chart from "../../components/chart/Chart";
-const Home = () => {
+const Home = (props) => {
   return (
     <div className="home">
       <Sidebar />
@@ -22,16 +22,17 @@ const Home = () => {
         </div>
         <div className="charts">
           <Chart
+            chartData={props.chartData}
             aspect={2 / 1}
             title="Total Projects in last six months"
             type={AreaChart}
             typename={Area}
           />
-          <Featured />
+          <Featured data={props.data} />
         </div>
         <div className="listContainer">
           <div className="listTitle">Blogs</div>
-          <List />
+          <List program1Details={props.program1Details} />
         </div>
       </div>
     </div>
