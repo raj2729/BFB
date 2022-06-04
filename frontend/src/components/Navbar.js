@@ -141,7 +141,7 @@ const Header = () => {
           </IconButton>
           <Typography variant="h6" className={classes.title} noWrap>
             <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
-              NGO Buddy
+              Bangalore Food Bank
             </Link>
           </Typography>
           <Select
@@ -243,32 +243,6 @@ const Header = () => {
             </ListItem>
           </List>
         </Link>
-        <Link
-          to={`/eventsAttended`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <List>
-            <ListItem button key="Events Attended">
-              <ListItemIcon>
-                <VerifiedUserIcon />
-              </ListItemIcon>
-              <ListItemText primary="Events Attended" />
-            </ListItem>
-          </List>
-        </Link>
-        <Link
-          to={`/giftcard`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <List>
-            <ListItem button key="Gift Card">
-              <ListItemIcon>
-                <CardGiftcardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Gift Card" />
-            </ListItem>
-          </List>
-        </Link>
         <Link to={`/map`} style={{ textDecoration: "none", color: "black" }}>
           <List>
             <ListItem button key="Maps">
@@ -279,32 +253,7 @@ const Header = () => {
             </ListItem>
           </List>
         </Link>
-        <Link
-          to={`/influencersLeaderboard`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <List>
-            <ListItem button key="Influencers LeaderBoard">
-              <ListItemIcon>
-                <EqualizerIcon />
-              </ListItemIcon>
-              <ListItemText primary="Influencers LeaderBoard" />
-            </ListItem>
-          </List>
-        </Link>
-        <Link
-          to={`/leaderboard`}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <List>
-            <ListItem button key="LeaderBoard">
-              <ListItemIcon>
-                <EqualizerIcon />
-              </ListItemIcon>
-              <ListItemText primary="LeaderBoard" />
-            </ListItem>
-          </List>
-        </Link>
+        
 
         {userInfo ? (
           <Link
