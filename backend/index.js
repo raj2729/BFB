@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/config");
 // const Pusher = require('pusher');
-const generatePDF = require("./generatePdf");
+// const generatePDF = require("./generatePdf");
 var axios = require("axios");
 const bodyParser = require("body-parser");
 
@@ -11,6 +11,8 @@ const dataRouter = require("./routes/dataRouter");
 const userRouter = require("./routes/userRouter");
 const ngoRouter = require("./routes/ngoRouter");
 const programRouter = require("./routes/programRouter");
+
+const enrollmentRouter = require("./routes/enrollmentyROutes");
 // Routes
 
 dotenv.config();
@@ -36,6 +38,7 @@ app.use("/data", dataRouter);
 app.use("/user", userRouter);
 app.use("/ngo", ngoRouter);
 app.use("/program", programRouter);
+app.use("/enrollment", enrollmentRouter);
 
 app.get("/", function (req, res) {
   res.send("StackUnderFlow backend is working");

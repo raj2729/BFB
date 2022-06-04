@@ -7,28 +7,37 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import axios from "axios";
 const AssignWorkers = () => {
   // const [filteredVehicles, setFilteredVehicles] = useState(vehicles);
-  const [driverFirstName, setDriverFirstName] = useState("");
-  // const [driverLastName, setDriverLastName] = useState("");
-  const [driverMobileNumber, setDriverMobileNumber] = useState(0);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
+  const [organisationName, setorganisationName] = useState("");
+  const [enrolledProgram, setenrolledProgram] = useState("");
+  const [representerName, setrepresenterName] = useState("");
+  const [representerDesignation, setrepresenterDesignation] = useState("");
+  const [registeredID, setregisteredID] = useState(0);
 
-  const [selectAll, setSelectAll] = useState(false);
+  const [month, setmonth] = useState("");
+  const [food, setfood] = useState(0);
+  const [under, setunder] = useState(0);
+  const [over, setover] = useState(0);
+  const [females, setfemales] = useState(0);
 
-  const [showCsvUploadOption, setShowCsvUploadOption] = useState(false);
+  const [total, settotal] = useState(0);
+
+  const [location, setlocation] = useState("");
+  const [partnerOrganisation, setpartnerOrganisation] = useState("");
 
   const [showLoading, setShowLoading] = useState(false);
 
+  const [showCsvUploadOption, setShowCsvUploadOption] = useState(false);
+
   const handleAssignDriver = async (e) => {
     e.preventDefault();
-    const mobileNumber = Number(driverMobileNumber);
+    // const mobileNumber = Number(driverMobileNumber);
 
     Swal.fire({
-      title: `Confirm Assigning Worker to Andheri Project`,
-      text: `Driver Name: Ramlal Sharma`,
+      title: `Confirm adding details`,
+      text: `Adding details to database`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#8a2be2",
@@ -41,18 +50,23 @@ const AssignWorkers = () => {
         try {
           // assignDriver
           const body = {
-            driverFirstName,
-            driverMobileNumber: mobileNumber,
-            address,
-            city,
+            organisationName,
+            enrolledProgram,
+            representerName,
+            representerDesignation,
+            registeredID,
+            month,
+            food,
+            under,
+            over,
+            females,
+            total,
+            location,
+            partnerOrganisation,
           };
-          Swal.fire("Driver has been assigned!", `Vehicle Tag:`, "success");
+          Swal.fire("Details has been saved!", `Successful`, "success");
         } catch (err) {
-          Swal.fire(
-            `Driver is already assigned for vehicle: `,
-            `Please check again.`,
-            "error"
-          );
+          Swal.fire(`Details cannot be saved`, `Please check again.`, "error");
         }
       }
       setShowLoading(false);
@@ -70,26 +84,19 @@ const AssignWorkers = () => {
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
     const headers = [
-      "srNo",
-      "city",
-      "operationsManagerName",
-      "operationsManagerMobileNumber",
-      "operationsManagerEmailID",
-      "driverBranch",
-      "depot",
-      "assigningManagerName",
-      "assigningManagerMobileNumber",
-      "assigningManagerEmailID",
-      "driverID",
-      "driverFirstName",
-      // "driverLastName",
-      "driverEmailID",
-      "driverMobileNumber",
-      "address",
-      "vehicleTag",
-      "batteryTag",
-      "chargerTag",
-      "accountIdOfBusiness",
+      "organisationName",
+      "enrolledProgram",
+      "representerName",
+      "representerDesignation",
+      "registeredID",
+      "month",
+      "food",
+      "under",
+      "over",
+      "females",
+      "total",
+      "location",
+      "partnerOrganisation",
     ];
     const newArray = rows.map((row) => {
       const values = row.split(delim);
@@ -102,114 +109,96 @@ const AssignWorkers = () => {
     });
 
     setCsvArray(newArray);
+    console.log(newArray);
     // console.log(newArray);
     let isErrorInCsvFile = false;
     let allAssigned = true;
-    // if (isErrorInCsvFile === false) {
-    //   let allAssigned = true;
-    //   newArray.map(async (row) => {
-    //     if (
-    //       row.city === undefined &&
-    //       row.operationsManagerName === undefined &&
-    //       row.operationsManagerMobileNumber === undefined &&
-    //       row.operationsManagerEmailID === undefined &&
-    //       row.driverBranch === undefined &&
-    //       row.depot === undefined &&
-    //       row.assigningManagerName === undefined &&
-    //       row.assigningManagerMobileNumber === undefined &&
-    //       row.assigningManagerEmailID === undefined &&
-    //       row.driverID === undefined &&
-    //       row.driverFirstName === undefined &&
-    //       // row.driverLastName === undefined &&
-    //       row.driverEmailID === undefined &&
-    //       row.driverMobileNumber === undefined &&
-    //       row.address === undefined &&
-    //       row.vehicleTag === undefined &&
-    //       row.batteryTag === undefined &&
-    //       row.chargerTag === undefined &&
-    //       row.accountIdOfBusiness === undefined
-    //     ) {
-    //       console.log(row);
-    //     } else {
-    //       try {
-    //         const headers = {
-    //           "Content-Type": "application/json",
-    //           "x-auth-token": localStorage.getItem(API_TOKEN),
-    //         };
-    //         // assignDriver
-    //         const body = {
-    //           city: row.city,
-    //           operationsManagerName: row.operationsManagerName,
-    //           operationsManagerMobileNumber: Number(
-    //             row.operationsManagerMobileNumber
-    //           ),
-    //           operationsManagerEmailID: row.operationsManagerEmailID,
-    //           driverBranch: row.driverBranch,
-    //           depot: row.depot,
-    //           assigningManagerName: row.assigningManagerName,
-    //           assigningManagerMobileNumber: Number(
-    //             row.assigningManagerMobileNumber
-    //           ),
-    //           assigningManagerEmailID: row.assigningManagerEmailID,
-    //           driverID: row.driverID,
-    //           driverFirstName: row.driverFirstName,
-    //           // driverLastName: row.driverLastName,
-    //           driverEmailID: row.driverEmailID,
-    //           driverMobileNumber: Number(row.driverMobileNumber),
-    //           address: row.address,
-    //           assetUID: "Assigned via CSV File",
-    //           vehicleTag: row.vehicleTag,
-    //           batteryTag: row.batteryTag,
-    //           chargerTag: row.chargerTag,
-    //           accountIdOfBusiness: row.accountIdOfBusiness,
-    //           accountIdUsedForAssigning: currentAdmin.accountId,
-    //           accountNameUsedForAssigning: currentAdmin.fullName,
-    //         };
-    //         console.log(body);
-    //         const { data } = await axios.post("/driver/assignDriver", body, {
-    //           headers,
-    //         });
-    //         if (data.success === true) {
-    //           console.log("Success");
-    //         } else {
-    //           console.log("Success=true not returned");
-    //           allAssigned = false;
-    //         }
-    //       } catch (err) {
-    //         console.log(err);
-    //         if (err.response.status === 404) {
-    //           console.log("Error 404", err);
-    //         } else if (err.response.status === 400) {
-    //           console.log("Error 400", err);
-    //         } else if (err.response.status === 500) {
-    //           console.log("Error 500", err);
-    //         }
-    //         allAssigned = false;
-    //         console.log("Error in Assigning Driver", err);
-    //       }
-    //     }
-    //   });
-    //   setTimeout(function () {
-    //     if (allAssigned === true) {
-    //       Swal.fire(
-    //         "Drivers have been assigned!",
-    //         `For all the vehicles`,
-    //         "success"
-    //       );
-    //     } else {
-    //       Swal.fire(`Error in assigning drivers`, `Check again`, "error");
-    //     }
-    //     document.getElementById("csvFile").value = "";
-    //     setCsvFile("");
-    //     setShowLoading(false);
-    //   }, 3000);
-
-    // }
+    if (isErrorInCsvFile === false) {
+      let allAssigned = true;
+      newArray.map(async (row) => {
+        if (
+          row.organisationName === undefined &&
+          row.enrolledProgram === undefined &&
+          row.representerName === undefined &&
+          row.representerDesignation === undefined &&
+          row.registeredID === undefined &&
+          row.month === undefined &&
+          row.month === undefined &&
+          row.food === undefined &&
+          row.under === undefined &&
+          row.over === undefined &&
+          row.females === undefined &&
+          row.total === undefined &&
+          row.location === undefined &&
+          row.partnerOrganisation === undefined
+        ) {
+          console.log(row);
+        } else {
+          try {
+            const headers = {
+              "Content-Type": "application/json",
+              // "x-auth-token": localStorage.getItem(API_TOKEN),
+            };
+            // assignDriver
+            const body = {
+              organisationName: row.organisationName,
+              enrolledProgram: row.enrolledProgram,
+              representerName: row.representerName,
+              representerDesignation: row.representerDesignation,
+              registeredID: row.registeredID,
+              month: row.month,
+              food: row.food,
+              under: row.under,
+              over: row.over,
+              females: row.females,
+              total: row.total,
+              location: row.location,
+              partnerOrganisation: row.partnerOrganisation,
+            };
+            console.log(body);
+            const { data } = await axios.post("/enrollment/assign", body, {
+              headers,
+            });
+            if (data.success === true) {
+              console.log("Success");
+            } else {
+              console.log("Success=true not returned");
+              allAssigned = false;
+            }
+          } catch (err) {
+            console.log(err);
+            if (err.response.status === 404) {
+              console.log("Error 404", err);
+            } else if (err.response.status === 400) {
+              console.log("Error 400", err);
+            } else if (err.response.status === 500) {
+              console.log("Error 500", err);
+            }
+            allAssigned = false;
+            console.log("Error in Adding Data", err);
+          }
+        }
+      });
+      setTimeout(function () {
+        if (allAssigned === true) {
+          Swal.fire(
+            "Data has been added!",
+            `For all the organisations`,
+            "success"
+          );
+        } else {
+          Swal.fire(`Error in adding data`, `Check data again`, "error");
+        }
+        document.getElementById("csvFile").value = "";
+        setCsvFile("");
+        setShowLoading(false);
+      }, 3000);
+    }
     setTimeout(function () {
       if (allAssigned === true) {
         Swal.fire(
-          "Workers have been assigned!",
-          `For all the workers`,
+          "Details have been added",
+          `For all the organisations`,
           "success"
         );
       } else {
@@ -272,7 +261,7 @@ const AssignWorkers = () => {
               marginBottom: "15px",
             }}
           >
-            City {"  "}
+            Organisation Name {"  "}
             <span
               style={{
                 color: "red",
@@ -282,12 +271,12 @@ const AssignWorkers = () => {
             </span>
           </span>
           <TextField
-            className="driverPageTextfield"
+            className="organisationName"
             variant="outlined"
             required
-            placeholder="Enter City"
+            placeholder="Enter Organisation Name"
             onChange={(e) => {
-              setCity(e.target.value);
+              setorganisationName(e.target.value);
             }}
           />
 
@@ -298,7 +287,7 @@ const AssignWorkers = () => {
               marginBottom: "15px",
             }}
           >
-            Worker Name {"  "}
+            Enrolled Program {"  "}
             <span
               style={{
                 color: "red",
@@ -308,13 +297,12 @@ const AssignWorkers = () => {
             </span>
           </span>
           <TextField
-            className="driverPageTextfield"
+            className="enrolledProgram"
             variant="outlined"
             required
-            placeholder="Enter Assigning Manager Name"
+            placeholder="Enter Enrolled Program"
             onChange={(e) => {
-              console.log("Hello");
-              // setAssigningManagerName(e.target.value);
+              setenrolledProgram(e.target.value);
             }}
           />
 
@@ -325,8 +313,7 @@ const AssignWorkers = () => {
               marginBottom: "15px",
             }}
           >
-            Mobile Number {"  "}
-            {/* </span> */}
+            Representer Name {"  "}
             <span
               style={{
                 color: "red",
@@ -336,14 +323,15 @@ const AssignWorkers = () => {
             </span>
           </span>
           <TextField
-            className="driverPageTextfield"
+            className="representerName"
             variant="outlined"
             required
-            placeholder="Enter Driver's Mobile Number"
+            placeholder="Enter Representer Name"
             onChange={(e) => {
-              setDriverMobileNumber(e.target.value);
+              setrepresenterName(e.target.value);
             }}
           />
+
           <span
             style={{
               marginTop: "25px",
@@ -351,7 +339,7 @@ const AssignWorkers = () => {
               marginBottom: "15px",
             }}
           >
-            Address {"  "}
+            Representer Designation {"  "}
             <span
               style={{
                 color: "red",
@@ -361,12 +349,246 @@ const AssignWorkers = () => {
             </span>
           </span>
           <TextField
-            className="driverPageTextfield"
+            className="representerDesignation"
             variant="outlined"
             required
-            placeholder="Enter Address"
+            placeholder="Enter Representer Designation"
             onChange={(e) => {
-              setAddress(e.target.value);
+              setrepresenterDesignation(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Registered ID {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="registeredID"
+            variant="outlined"
+            required
+            placeholder="Enter Registered ID"
+            onChange={(e) => {
+              setregisteredID(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Month {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="month"
+            variant="outlined"
+            required
+            placeholder="Enter month"
+            onChange={(e) => {
+              setmonth(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Food {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="food"
+            variant="outlined"
+            required
+            placeholder="Enter amount of food"
+            onChange={(e) => {
+              setfood(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Beneficiaries under 18 {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="under"
+            variant="outlined"
+            required
+            placeholder="Enter Beneficiaries under 18"
+            onChange={(e) => {
+              setunder(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Beneficiaries over 60 {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="over"
+            variant="outlined"
+            required
+            placeholder="Enter Beneficiaries over 60"
+            onChange={(e) => {
+              setover(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Number of female Beneficiaries {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="females"
+            variant="outlined"
+            required
+            placeholder="Enter Number of female Beneficiaries"
+            onChange={(e) => {
+              setfemales(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Number of total Beneficiaries {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="total"
+            variant="outlined"
+            required
+            placeholder="Enter Number of total Beneficiaries"
+            onChange={(e) => {
+              settotal(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Location {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="location"
+            variant="outlined"
+            required
+            placeholder="Enter Location"
+            onChange={(e) => {
+              setlocation(e.target.value);
+            }}
+          />
+
+          <span
+            style={{
+              marginTop: "25px",
+              marginLeft: "7px",
+              marginBottom: "15px",
+            }}
+          >
+            Partner Organisation {"  "}
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              *
+            </span>
+          </span>
+          <TextField
+            className="partnerOrganisation"
+            variant="outlined"
+            required
+            placeholder="Enter Partner Organisation"
+            onChange={(e) => {
+              setpartnerOrganisation(e.target.value);
             }}
           />
 
@@ -387,7 +609,7 @@ const AssignWorkers = () => {
                 backgroundColor: "#8a2be2",
               }}
             >
-              Assign Worker
+              Add details
             </Button>
             {showLoading && (
               <CircularProgress
