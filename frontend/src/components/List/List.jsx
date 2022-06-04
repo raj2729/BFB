@@ -77,7 +77,7 @@ const List = (props) => {
             <TableCell className="tablecell">NGO ID</TableCell>
             <TableCell className="tablecell">title</TableCell>
             <TableCell className="tablecell">Representative</TableCell>
-            {/* <TableCell className="tablecell">Date</TableCell> */}
+            {/*<TableCell className="tablecell">Date</TableCell>*/}
             <TableCell className="tablecell">Verification Status</TableCell>
             <TableCell className="tablecell">tags</TableCell>
           </TableRow>
@@ -86,14 +86,16 @@ const List = (props) => {
           {rows.slice(0, 10).map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
+              {/*
               <TableCell className="tablecell">
                 <div className="cellWrapper">
                   <img src={row.img} alt="" className="image" />
                   {row.title.slice(0, 30)}..
                 </div>
               </TableCell>
+          */}
               <TableCell className="tablecell">{row.author}</TableCell>
-              <TableCell className="tablecell">{row.date}</TableCell>
+              {/*<TableCell className="tablecell">{row.date}</TableCell>*/}
               <TableCell className="tablecell">
                 <span className={`status ${row.status}`}>{row.status}</span>{" "}
               </TableCell>

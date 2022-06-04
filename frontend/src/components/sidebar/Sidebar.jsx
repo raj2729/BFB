@@ -80,24 +80,28 @@ const Sidebar = () => {
               <span>Logistics</span>
             </li>
           </Link>
+          {/*
           <Link to="/assignTasks" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
               <span>Assign Tasks</span>
             </li>
           </Link>
+
           <Link to="/attendance" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
               <span>Attendance</span>
             </li>
           </Link>
+  */}
           <Link to="/imagetotext" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
               <span>OCR</span>
             </li>
           </Link>
+          {/*
           <Link to="/leaderboard" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
@@ -110,6 +114,7 @@ const Sidebar = () => {
               <span>Fund Donation</span>
             </li>
           </Link>
+*/}
           <Link to="/sendReminder" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
@@ -124,13 +129,14 @@ const Sidebar = () => {
             <LocalShippingOutlinedIcon className="icon" />
             <span>Delivery</span>
           </li> */}
-          <p className="title">USEFULL LINKS</p>
+          {/*<p className="title">USEFULL LINKS</p>*/}
           <Link to="/statistics" style={{ textDecoration: "none" }}>
             <li>
               <InsertChartOutlinedSharpIcon className="icon" />
               <span>Stats</span>
             </li>
           </Link>
+          {/*
           <Link to="/notification" style={{ textDecoration: "none" }}>
             <li>
               <NotificationsNoneOutlinedIcon className="icon" />
@@ -142,12 +148,14 @@ const Sidebar = () => {
             <WysiwygIcon className="icon" />
             <span>System Health</span>
           </li>
+        */}
           <Link to="/login">
             <li>
               <VpnKeyIcon className="icon" />
               <span>Login</span>
             </li>
           </Link>
+          {/*
           <li>
             <SettingsIcon className="icon" />
             <span>Settings</span>
@@ -161,6 +169,7 @@ const Sidebar = () => {
             <LogoutOutlinedIcon className="icon" />
             <span>Log out</span>
           </li>
+      */}
         </ul>
       </div>
       {/* <div className="bottom"></div> */}
