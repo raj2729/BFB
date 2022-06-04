@@ -322,64 +322,7 @@ function Blogs() {
           }}
         >
           <h2>Categories</h2>
-          <Paper square>
-            <Tabs
-              value={value}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={handleChange}
-              aria-label="disabled tabs example"
-            >
-              <Tab
-                label={
-                  <>
-                    <NotificationImportantIcon />
-                    Recent
-                  </>
-                }
-              />
-              <Tab
-                label={
-                  <>
-                    <PetsIcon />
-                    Animals
-                  </>
-                }
-              />
-              <Tab
-                label={
-                  <>
-                    <CastForEducationIcon />
-                    Education
-                  </>
-                }
-              />
-              <Tab
-                label={
-                  <>
-                    <PersonIcon />
-                    Elderly
-                  </>
-                }
-              />
-              <Tab
-                label={
-                  <>
-                    <LocalHospitalIcon />
-                    Medical
-                  </>
-                }
-              />
-              <Tab
-                label={
-                  <>
-                    <HomeIcon />
-                    Disaster Relief
-                  </>
-                }
-              />
-            </Tabs>
-          </Paper>
+          
           {/* EVENT CARDS */}
           <br />
           <div style={{ display: "flex", flexWrap: "wrap" }}>

@@ -243,6 +243,16 @@ const Header = () => {
             </ListItem>
           </List>
         </Link>
+        <Link to={`/About`} style={{ textDecoration: "none", color: "black" }}>
+          <List>
+            <ListItem button key="About">
+              <ListItemIcon>
+                <BookIcon />
+              </ListItemIcon>
+              <ListItemText primary="About" />
+            </ListItem>
+          </List>
+        </Link>
         <Link to={`/map`} style={{ textDecoration: "none", color: "black" }}>
           <List>
             <ListItem button key="Maps">
