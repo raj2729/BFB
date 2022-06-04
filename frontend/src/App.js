@@ -630,28 +630,28 @@ function App() {
   let totalProgram1 = [];
 
   const program1Details = [];
-  useEffect(() => {
-    data.map((res) => {
-      if (res.programID._id === "629b735c37932048c62ba9a3") {
-        program1.push(res);
-      }
-    });
+  // useEffect(() => {
+  data.map((res) => {
+    if (res.programID._id === "629b735c37932048c62ba9a3") {
+      program1.push(res);
+    }
+  });
 
-    program1.forEach((res) => {
-      totalProgram1.push({ name: res.month, Total: res.total });
-    });
+  program1.forEach((res) => {
+    totalProgram1.push({ name: res.month, Total: res.total });
+  });
 
-    program1.forEach((res) => {
-      program1Details.push({
-        id: res._id,
-        title: res.ngoID.name,
-        author: res.userID.name,
-        status: res.userID.status,
-        tags: res.userID.designation,
-      });
+  program1.forEach((res) => {
+    program1Details.push({
+      id: res._id,
+      title: res.ngoID.name,
+      author: res.userID.name,
+      status: res.userID.status,
+      tags: res.userID.designation,
     });
-    console.log(program1Details);
-  }, []);
+  });
+  console.log(program1Details);
+  // }, []);
 
   // function fetchDetails(x) {
   //   return x.map((res) => {
@@ -681,15 +681,33 @@ function App() {
             />
             <Route
               path="program2"
-              element={<Home data={6} chartData={chartData1} />}
+              element={
+                <Home
+                  data={6}
+                  chartData={chartData1}
+                  program1Details={program1Details}
+                />
+              }
             />
             <Route
               path="program3"
-              element={<Home data={7} chartData={chartData2} />}
+              element={
+                <Home
+                  data={7}
+                  chartData={chartData2}
+                  program1Details={program1Details}
+                />
+              }
             />
             <Route
               path="program4"
-              element={<Home data={8} chartData={chartData3} />}
+              element={
+                <Home
+                  data={8}
+                  chartData={chartData3}
+                  program1Details={program1Details}
+                />
+              }
             />
             <Route path="login" element={<Login />} />
             <Route path="notification" element={<Notification />} />
