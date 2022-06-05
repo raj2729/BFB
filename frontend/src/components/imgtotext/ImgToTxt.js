@@ -5,7 +5,7 @@ import "./style.css";
 
 import Navbar from "../navbar/Navbar";
 import Sidebar from "../sidebar/Sidebar";
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
 const ImgToTxt = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -42,7 +42,7 @@ const ImgToTxt = () => {
           <div className="row h-100">
             <div className="col-md-5 mx-auto h-100 d-flex flex-column justify-content-center">
               {!isLoading && (
-                <h1 className="text-center py-5 mc-5">Image To Text</h1>
+                <h1 className="text-center py-5 mc-5">Upload Whatsapp Image</h1>
               )}
               {isLoading && (
                 <>

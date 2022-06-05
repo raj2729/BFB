@@ -33,7 +33,6 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add new Worker
         <Link to="/users/new " className="link">
           Add new
         </Link>

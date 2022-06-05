@@ -18,7 +18,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Constructor Buddy</span>
+          <span className="logo">Bangalore Food Bank</span>
         </Link>
       </div>
       <hr />
@@ -28,46 +28,47 @@ const Sidebar = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Program 1</span>
+              <span>NGO Feeding</span>
             </li>
           </Link>
           <Link to="/program2" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Program 2</span>
+              <span>Food Rescue Program</span>
             </li>
           </Link>
           <Link to="/program3" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Program 3</span>
+              <span>Breakfast Feeding</span>
             </li>
           </Link>
           <Link to="/program4" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Program 4</span>
+              <span>Food Relief Program</span>
             </li>
           </Link>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <GroupIcon className="icon" />
-              <span>Workers</span>
+              <span>Enrolled NGO's</span>
             </li>
           </Link>
           <Link to="/projects" style={{ textDecoration: "none" }}>
             <li>
               <GroupIcon className="icon" />
-              <span>Projects</span>
+              <span>Export Data</span>
             </li>
           </Link>
           <Link to="/assignWorkers" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
-              <span>Assign Workers</span>
+              <span>Manual updation</span>
             </li>
           </Link>
+          {/*
           <Link to="/inventory" style={{ textDecoration: "none" }}>
             <li>
               <GroupIcon className="icon" />
@@ -79,7 +80,7 @@ const Sidebar = () => {
               <CategoryIcon className="icon" />
               <span>Logistics</span>
             </li>
-          </Link>
+  </Link>*/}
           {/*
           <Link to="/assignTasks" style={{ textDecoration: "none" }}>
             <li>
@@ -98,7 +99,7 @@ const Sidebar = () => {
           <Link to="/imagetotext" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
-              <span>OCR</span>
+              <span>Whatsapp Input</span>
             </li>
           </Link>
           {/*
@@ -118,7 +119,7 @@ const Sidebar = () => {
           <Link to="/sendReminder" style={{ textDecoration: "none" }}>
             <li>
               <CategoryIcon className="icon" />
-              <span>Send Reminder</span>
+              <span>Validate</span>
             </li>
           </Link>
           {/* <li>

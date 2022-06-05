@@ -89,7 +89,7 @@ const FundDonation = () => {
       amount: data.amount,
       currency: data.currency,
       order_id: data.id,
-      name: "Construction Buddy",
+      name: "BFB",
       description: "Test Transaction",
       // order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {

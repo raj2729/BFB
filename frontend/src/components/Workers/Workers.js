@@ -292,14 +292,6 @@ const Workers = () => {
                   label="Assign Workers"
                   icon={<AddCircleOutlineIcon />}
                 />
-                <BottomNavigationAction
-                  label="View Workers"
-                  icon={<PeopleAltIcon />}
-                />
-                <BottomNavigationAction
-                  label="Unassign Workers"
-                  icon={<PersonRemoveAlt1Icon />}
-                />
               </BottomNavigation>
             </Box>
 

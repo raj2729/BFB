@@ -227,7 +227,7 @@ const AssignWorkers = () => {
     <>
       <FormControl component="fieldset">
         <FormLabel component="legend" style={{ color: "black" }}>
-          <h3>Assign Worker</h3>
+          <h3>Add Data</h3>
         </FormLabel>
         <RadioGroup
           aria-label="analysis"

@@ -83,7 +83,7 @@ const SendReminder = () => {
                   fontWeight: "bold",
                 }}
               >
-                Send Reminder
+                Validate Progress
               </h1>
               <br />
               <TableContainer component={Paper}>
