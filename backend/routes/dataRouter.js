@@ -22,6 +22,36 @@ router.get("/all", async (req, res) => {
     });
 });
 
+router.get("/children", (req, res) => {
+  Data.find({}, "_id children", (err, data) => {
+    if (err) {
+      res.status(400).send({
+        message: err,
+      });
+    } else {
+      res.status(200).send({
+        message: "Success",
+        data: data,
+      });
+    }
+  });
+});
+
+router.get("/female", (req, res) => {
+  Data.find({}, "female", (err, data) => {
+    if (err) {
+      res.status(400).send({
+        message: err,
+      });
+    } else {
+      res.status(200).send({
+        message: "Success",
+        data: data,
+      });
+    }
+  });
+});
+
 router.get("/:dataid", (req, res) => {
   Data.findById(req.params.dataid)
     .populate("ngoID")
@@ -95,36 +125,6 @@ router.post("/:dataid", (req, res) => {
     } else {
       res.status(200).send({
         message: "Data updated successfully",
-      });
-    }
-  });
-});
-
-router.get("/children", (req, res) => {
-  Data.find({}, "_id children", (err, data) => {
-    if (err) {
-      res.status(400).send({
-        message: err,
-      });
-    } else {
-      res.status(200).send({
-        message: "Success",
-        data: data,
-      });
-    }
-  });
-});
-
-router.get("/female", (req, res) => {
-  Data.find({}, "_id female", (err, data) => {
-    if (err) {
-      res.status(400).send({
-        message: err,
-      });
-    } else {
-      res.status(200).send({
-        message: "Success",
-        data: data,
       });
     }
   });
